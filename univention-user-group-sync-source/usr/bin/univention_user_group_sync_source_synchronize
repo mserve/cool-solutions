@@ -2,12 +2,16 @@
 #
 # user_group_sync_source
 # Synchronize all existing ldap-diff files to the target host set in the ldap/sync/destination variable
+# if reverse mode is enabled with ldap/sync/destination
 #
 # Copyright 2018-2019 Univention GmbH
 #
 # http://www.univention.de/
 #
 # All rights reserved.
+#
+# 2020/19/12 - Martin Stuckenbröker <stuckenbroeker@oszimt.de>
+#     reverse mode added
 #
 # The source code of this program is made available
 # under the terms of the GNU Affero General Public License version 3
@@ -31,6 +35,12 @@
 # <http://www.gnu.org/licenses/>.
 
 FILE_BASE=/var/lib/univention-user-group-sync
+
+eval "$(/usr/sbin/univention-config-registry shell ldap/sync/reverse_mode)"
+if [ -z ${ldap_sync_destination} ]; then
+    echo "Running in reverse mode, no transfer required"
+fi
+
 LOCKFILE=${FILE_BASE}/.lock
 if [ -e ${LOCKFILE} ] && kill -0 `cat ${LOCKFILE}`; then
     echo "Already running"

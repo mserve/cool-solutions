@@ -63,3 +63,9 @@ Description[de]=Kommaseparierte Attribute, an die das Prefix aus ldap/sync/prefi
 Description[en]=Comma-separated attributes to which the prefix defined in ldap/sync/prefix shall be added. "cn", "memberUid", "uniqueMember" and "entryDN" are always modified. This setting is meant for attributes beyond these, which also always contain the group name.
 Type=str
 Categories=system
+
+[ldap/sync/reverse_mode]
+Description[de]=Synchronisiere im reverse-Modus (Destination holt sich Daten von Quelle ab)
+Description[en]=Synchronize in reverse mode (destination server fetches pickle files from source)
+Type=bool
+Categories=system

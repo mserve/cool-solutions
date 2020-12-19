@@ -42,7 +42,12 @@ joinscript_init
 echo -e "Creating local service user"
 
 ldap_base=$(ucr get ldap/base)
-password_local=$(pwgen 20 1)
+
+password_local=$(pwgen -Bv 40 1)
+
+echo $password_local > /etc/univention-user-group-sync-source.secret
+chmod 600 /etc/univention-user-group-sync-source.secret
+
 
 udm users/user create "$@" \
 --position "cn=users,$ldap_base" \
@@ -53,6 +58,9 @@ udm users/user create "$@" \
 --set password=$password_local \
 --set uidNumber=342 \
 --set unixhome=/var/lib/univention-user-group-sync
+
+# Allow SSH login (required for reverse mode)
+ucr set auth/sshd/user/ucs-sync=yes
 
 user_exists_python=1
 retries=0

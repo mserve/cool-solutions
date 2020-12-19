@@ -40,6 +40,9 @@ case "$1" in
 		# User listener:nogroup needs writing rights
 		chmod 777 /var/lib/univention-user-group-sync
 
+                # Disable reverse mode by default
+                usr set ldap/sync/reversemode?0
+
     call_joinscript 99univention-user-group-sync-source_add-ucs-sync.inst
 
 		#

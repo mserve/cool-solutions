@@ -10,3 +10,4 @@ Variables: ldap/sync/whitelist/objectClass
 Variables: ldap/sync/prefix
 Variables: ldap/sync/prefix/user/attributes
 Variables: ldap/sync/prefix/group/attributes
+Variables: ldap/sync/reverse_mode

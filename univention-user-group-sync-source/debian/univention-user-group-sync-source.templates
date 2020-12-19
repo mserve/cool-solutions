@@ -4,6 +4,19 @@ Description: The FQDN or IP of the destination host
  A SSH connection to the destination host has to be created once during the package installation
  to validate a possible synchronization connection to the destination.
 
+Template: univention-user-group-sync-source/password
+Type: password
+Description: A strong password for the data transfer system user 'ucs-sync'
+ This password is only needed once during the initialization of the synchronization connection
+ on the side of the destination host if running in reverse mode. It has to be entered during the 
+ installation of package univention-user-group-sync-dest. It can be changed afterwards.
+
+Template: univention-user-group-sync-source/reverse_mode
+Type: boolean
+Description: Enables the reverse mode. This is required if there is no possibility to reach the
+ destination host due to network security restrictions, but the source can be connected via SSH
+ by the destination system. Needs to be set on both ends!
+
 Template: univention-user-group-sync-source/ldap_filter
 Type: string
 Description: This field is optional. By default, all user and group objects below the LDAP base will be synchronized.
