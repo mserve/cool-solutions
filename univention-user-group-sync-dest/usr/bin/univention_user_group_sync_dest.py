@@ -440,7 +440,7 @@ def _direct_update(attributes, mapping, user_dn):
         lo.modify(user.position.getDn(), modlist)
     except:
         _log_message("E: During User.modify_ldap: %s" % traceback.format_exc())
-        print "E: During User.modify_ldap: %s" % traceback.format_exc()
+        print("E: During User.modify_ldap: %s" % traceback.format_exc())
         exit()
 
 
@@ -625,7 +625,7 @@ def _modify_user(user_dn, attributes):
             user.modify()
         except:
             _log_message('E: During User.modify_changes: %s' % traceback.format_exc())
-            print 'E: During User.modify_changes: %s' % traceback.format_exc()
+            print('E: During User.modify_changes: %s' % traceback.format_exc())
             exit()
     _direct_update(attributes, _translate_user_mapping_direct, user_dn)
 
@@ -652,7 +652,7 @@ def _modify_simpleAuth(simpleauth_dn, attributes):
             simpleauth.modify()
         except:
             _log_message('E: During SimpleAuth.modify_changes: %s' % traceback.format_exc())
-            print 'E: During SimpleAuth.modify_changes: %s' % traceback.format_exc()
+            print('E: During SimpleAuth.modify_changes: %s' % traceback.format_exc())
             exit()
     _direct_update(attributes, _translate_simpleauth_mapping_direct, simpleauth_dn)
 
@@ -685,7 +685,7 @@ def _modify_group(group_dn, attributes):
             group.modify()
         except:
             _log_message("E: During Group.modify_changes: %s" % traceback.format_exc())
-            print "E: During Group.modify_changes: %s" % traceback.format_exc()
+            print("E: During Group.modify_changes: %s" % traceback.format_exc())
             exit()
 
 

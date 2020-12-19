@@ -1,20 +1,16 @@
 #!/bin/bash
 #
 # user_group_sync_dest
-# Synchronize all existing ldap-diff files from the target host set in the ldap/sync/destination variable
-# if reverse mode is enabled with ldap/sync/destination
+# Synchronize all existing ldap-diff files from the target host set in the ldap/sync/destination variable if reverse mode is enabled with ldap/sync/destination
 #
-# Copyright 2018-2019 Univention GmbH
+# Copyright 2020 Univention GmbH
 #
 # http://www.univention.de/
 #
 # All rights reserved.
 #
-# 2020/19/12 - Martin Stuckenbröker <stuckenbroeker@oszimt.de>
-#    copied file from user_group_sync_source for reverse mode
-#
-# The source code of this program is made available under the terms of the GNU Affero 
-# General Public License version 3
+# The source code of this program is made available
+# under the terms of the GNU Affero General Public License version 3
 # (GNU AGPL V3) as published by the Free Software Foundation.
 #
 # Binary versions of this program provided by Univention to you as
@@ -33,6 +29,11 @@
 # License with the Debian GNU/Linux or Univention distribution in file
 # /usr/share/common-licenses/AGPL-3; if not, see
 # <http://www.gnu.org/licenses/>.
+#
+#
+# 2020/19/12 - Martin Stuckenbröker <stuckenbroeker@oszimt.de>
+#    copied file from user_group_sync_source for reverse mode
+#
 
 FILE_BASE=/var/lib/univention-user-group-sync
 
