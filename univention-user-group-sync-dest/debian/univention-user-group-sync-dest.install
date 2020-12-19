@@ -1,1 +1,2 @@
-usr
+usr/bin/univention_user_group_sync_dest.py usr/bin
+usr/bin/univention_user_group_sync_dest_synchronize usr/bin

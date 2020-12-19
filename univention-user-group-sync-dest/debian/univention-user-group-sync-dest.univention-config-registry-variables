@@ -33,3 +33,17 @@ Description[de]=Kommasepariertes LDAP-zu-UDM Attribute mapping, für weitere zu 
 Description[en]=Comma-separated LDAP-to-UDM attribute mapping for further User-Attributes to be synchronised. E.g.: "LDAPName:UDMVName,o:organisation"
 Type=string
 Categories=system
+
+[ldap/sync/source]
+Description[de]=Hostname oder IP, von dem Pickle-Dateien übertragen werden sollen (für Reverse-Modus)
+Description[en]=Hostname or IP from which pickle files shall be transmitted to (for reverse mode)
+Type=str
+Categories=system
+
+[ldap/sync/reverse_mode]
+Description[de]=Synchronisiere im reverse-Modus (Destination holt sich Pickle-Dateien von Quelle ab)
+Description[en]=Synchronize in reverse mode (destination server fetches pickle files from source)
+Type=bool
+Categories=system
+
+

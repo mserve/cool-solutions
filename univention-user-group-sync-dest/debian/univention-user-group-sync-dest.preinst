@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 # user group sync dest
+# Synchronize all existing ldap-diff files from the source host set in the ldap/sync/sourcen variable
+# if reverse mode is enabled with ldap/sync/reverse_mode
 #
 # Copyright 2018-2019 Univention GmbH
 #
@@ -48,6 +50,29 @@ case "$1" in
         --set uidNumber=342 --set primaryGroup="cn=Domain Users,cn=groups,$ldap_base" \
         --set unixhome=/var/lib/univention-user-group-sync
         ucr set auth/sshd/user/ucs-sync=yes
+
+        user_exists_python=1
+        retries=0
+        while [ $user_exists_python -ne 0 ]
+        do
+          if [ $retries -ge 12 ]; then
+            echo "Local service user ucs-sync did not exist after 120 seconds. Exiting..."
+            exit 1
+          fi
+          echo "Local service user ucs-sync does not yet exist on local system. Waiting..."
+          sleep 10
+          python -c "import pwd;owning_user_number = pwd.getpwnam('ucs-sync').pw_uid" > /dev/null 2>&1
+          user_exists_python=$?
+          $((retries=retries+1))
+        done
+        echo "Local service user ucs-sync exists now."
+
+        if [ ! -f /var/lib/univention-user-group-sync/.ssh/id_rsa ]; then
+            su - ucs-sync -c "ssh-keygen -q -f ~/.ssh/id_rsa -t rsa -N ''"
+        fi
+
+        echo "Done!"
+
     ;;
 
     upgrade|abort-upgrade)
