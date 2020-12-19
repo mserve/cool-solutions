@@ -4,4 +4,16 @@ Description: A strong password for the data transfer system user 'ucs-sync'
  This password is only needed once during the initialization of the synchronization connection
  on the side of the source host. It has to be entered during the installation of 
  package univention-user-group-sync-source. It can be changed afterwards. 
+
+Template: univention-user-group-sync-dest/reverse_mode
+Type: boolean
+Description: Enables the reverse mode. This is required if there is no possibility to reach the
+ destination host due to network security restrictions, but the source can be connected via SSH
+ by the destination system. Needs to be set on both ends!
  
+Template: univention-user-group-sync-dest/source_host
+Type: string
+Description: The FQDN or IP of the source host if reverse mode is required due to connecticity
+ restriction. A SSH connection to the source host has to be created once during the package
+ installation to validate a possible synchronization connection to the source.
+

@@ -1,3 +1,9 @@
+univention-user-group-sync-dest (2.2.0-26) unstable; urgency=medium
+
+  * Add reverse mode to allow destination reading pickle files from source
+
+ -- Martin Stuckenbreoker <stuckenbroeker@oszimt.de>  Sat, 19 Dez 2020 19:16:00 +0100
+
 univention-user-group-sync-dest (2.1.0-25) unstable; urgency=medium
 
   * Re-Add user to his previous groups, if sync is reenabled #26041
